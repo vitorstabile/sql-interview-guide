@@ -108,17 +108,135 @@
 
 #### <a name="chapter1part1"></a>Chapter 1 - Part 1: What is SQL?
 
+SQL (Structured Query Language) is a standard programming language used to interact with relational databases. It is used to store, retrieve, update, and delete data. SQL is also used to create and modify database structures such as tables,views, and indexes.
+
+```sql
+SELECT * FROM Employees;
+```
+
+This query retrieves all the records from the Employees table.
+
 #### <a name="chapter1part2"></a>Chapter 1 - Part 2: What is a Database?
+
+A database is an organized collection of data that is stored and managed electronically. It allows users to efficiently store, retrieve, update, and managedata. Databases are used to handle large amounts of information in various applications such as websites, business systems, and applications.
+
+**Example:**
+
+A customer database in an e-commerce website may store customer details likename, email, contact number, and purchase history.
 
 #### <a name="chapter1part3"></a>Chapter 1 - Part 3: What are the types of SQL commands?
 
+SQL commands are categorized into five types based on their functionality:
+
+**DDL (Data Definition Language)**
+- Defines the structure of the database.
+  - CREATE
+  - ALTER
+  - DROP
+  - TRUNCATE
+
+**DML (Data Manipulation Language)**
+- Manages data stored in the database.
+  - SELECT
+  - INSERT
+  - UPDATE
+  - DELETE
+
+**DCL (Data Control Language)**
+- Controls access to the data.
+  - GRANT
+  - REVOKE
+
+**TCL (Transaction Control Language)**
+- Manages transactions in thedatabase.
+  - COMMIT
+  - ROLLBACK
+  - SAVEPOINT
+
+**DQL (Data Query Language)**
+- Retrieves data from the database.
+  - 
+
 #### <a name="chapter1part4"></a>Chapter 1 - Part 4: What is Primary Key?
+
+A Primary Key is a column or a combination of columns in a table that uniquely identifies
+each row in that table. It does not allow NULL values and must always contain unique
+values.
+
+**Key Features:**
+
+- Uniquely identifies each record
+- Cannot have duplicate values
+- Cannot contain NULL values
+- Only one primary key is allowed per table
+
+```sql
+CREATE TABLE Employees (
+ EmployeeID INT PRIMARY KEY,
+ Name VARCHAR(50),
+ Age INT
+);
+```
+
+Here, EmployeeID is the primary key that uniquely identifies each employee.
 
 #### <a name="chapter1part5"></a>Chapter 1 - Part 5: What is Foreign Key?
 
+A Foreign Key is a column or combination of columns in one table that refers to the Primary Key in another table. It is used to create a relationship between two tables and enforce referential integrity.
+
+**Key Features:**
+
+- Establishes a relationship between two tables
+- Can contain duplicate values
+- Can accept NULL values
+- Helps maintain data consistency
+
+```sql
+CREATE TABLE Departments (
+ DepartmentID INT PRIMARY KEY,
+ DepartmentName VARCHAR(50)
+);
+
+CREATE TABLE Employees (
+ EmployeeID INT PRIMARY KEY,
+ Name VARCHAR(50),
+ DepartmentID INT,
+ FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+```
+
+Here, DepartmentID in the Employees table is a foreign key that references theDepartmentID column in the Departments table.
+
 #### <a name="chapter1part6"></a>Chapter 1 - Part 6: What is UNIQUE Key?
 
+A UNIQUE Key is a constraint that ensures all values in a column or combination of columns are distinct across all rows in the table. It prevents duplicate values but allows NULL values (only one NULL value in most databases).
+
+**Key Features:**
+
+- Ensures uniqueness of each record in the column
+- Allows one NULL value (depending on the database)
+- Multiple UNIQUE keys can be defined in a table
+- Helps maintain data integrity
+
+```sql
+CREATE TABLE Employees (
+ EmployeeID INT PRIMARY KEY,
+ Email VARCHAR(100) UNIQUE,
+ Name VARCHAR(50)
+);
+```
+
+Here, the Email column has a UNIQUE constraint, ensuring no two employees can have thesame email address.
+
 #### <a name="chapter1part7"></a>Chapter 1 - Part 7: What is the difference between Primary Key and UNIQUE Key?
+
+|Primary Key|UNIQUE Key|
+| :--: | :--:|
+|Uniquely identifies each row in a table|Ensures all values in the column are unique|
+|Does not allow NULL values|Allows one NULL value (in most databases)|
+|Only one primary key is allowed per table|Multiple UNIQUE keys can be definedin a table|
+|Automatically creates a unique clustered index|Creates a unique non-clustered index|
+|Used to uniquely identify a record|Used to enforce uniqueness in a column without being a primary identifierCreated|
 
 #### <a name="chapter1part8"></a>Chapter 1 - Part 8: What is NOT NULL constraint?
 
