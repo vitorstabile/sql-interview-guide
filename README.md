@@ -240,9 +240,55 @@ Here, the Email column has a UNIQUE constraint, ensuring no two employees can ha
 
 #### <a name="chapter1part8"></a>Chapter 1 - Part 8: What is NOT NULL constraint?
 
+The NOT NULL constraint ensures that a column cannot have NULL values. It is used to enforce that every row must have a value in that column.
+
+**Key Features:**
+- Prevents insertion of NULL values
+- Ensures mandatory fields have data
+- Can be applied to one or more columns
+
+```sql
+CREATE TABLE Employees (
+ EmployeeID INT PRIMARY KEY,
+ Name VARCHAR(50) NOT NULL,
+ Email VARCHAR(100)
+);
+```
+
+In this example, the Name column cannot have NULL values, while the Email column can accept NULL values
+
 #### <a name="chapter1part9"></a>Chapter 1 - Part 9: What is Default Constraint?
 
+The Default Constraint provides a default value for a column when no value is specified during the insertion of a new record.
+
+**Key Features:**
+- Automatically assigns a default value if no value is provided
+- Helps avoid NULL values in specific columns
+- Can be applied to any data typeExample
+
+```sql
+CREATE TABLE Employees (
+ EmployeeID INT PRIMARY KEY,
+ Name VARCHAR(50),
+ Salary DECIMAL(10,2) DEFAULT 5000
+);
+```
+
+In this example, if no salary is provided while inserting a record, the Salary column will automatically be set to 5000.
+
 #### <a name="chapter1part10"></a>Chapter 1 - Part 10: What is the difference between DELETE, TRUNCATE, and DROP?
+
+|Command|Function|Can Rollback|Affect Structure|Speed|
+| :--: | :--:| :--:| :--:| :--:|
+| DELETE | Removes Specific rows based on a condition using the WHERE Clause | Yes (With COMMIT/ROLLBACK) | Slow (Row-by-row deletion) |
+| TRUNCATE | Removes All rows from the table without a condition | No | No | Faster than DELETE |
+| DROP | Deletes the entire table including data and structure | No | Yes (Removes table structure)  | Fastest |
+
+```sql
+DELETE FROM Employees WHERE EmployeeID = 101; -- Deletes specific row
+TRUNCATE TABLE Employees; -- Deletes all rows
+DROP TABLE Employees; -- Deletes table completely
+```
 
 #### <a name="chapter1part11"></a>Chapter 1 - Part 11: What is the difference between WHERE and HAVING?
 
