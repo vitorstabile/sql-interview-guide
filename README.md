@@ -155,7 +155,7 @@ SQL commands are categorized into five types based on their functionality:
 
 **DQL (Data Query Language)**
 - Retrieves data from the database.
-  - 
+  - SELECT
 
 #### <a name="chapter1part4"></a>Chapter 1 - Part 4: What is Primary Key?
 
