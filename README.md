@@ -292,7 +292,36 @@ DROP TABLE Employees; -- Deletes table completely
 
 #### <a name="chapter1part11"></a>Chapter 1 - Part 11: What is the difference between WHERE and HAVING?
 
+The WHERE and HAVING clauses in SQL are both used for filtering data, but they operate at different stages of query execution and serve distinct purposes
+
+|Clause|Purpose|Used With|Filter Type|Execution Order|
+|:--:| :--:| :--:| :--:| :--:|
+|WHERE|Filters rows before grouping|SELECT, UPDATE, DELETE|Row-level filter|Applied before GROUP BY|
+|HAVING|Filters groups after grouping|SELECT with GROUP BY|Group-level filter|Applied after GROUP BY|
+
+```sql
+-- WHERE Example
+SELECT Name, Salary
+FROM Employees
+WHERE Salary > 5000;
+
+SELECT Department, AVG(Salary) AS AvgSalary
+FROM Employees
+GROUP BY Employees
+HAVING AVG(Salary) > 5000;
+```
+
 #### <a name="chapter1part12"></a>Chapter 1 - Part 12: What are Joins in SQL?
+
+Joins in SQL are used to combine data from two or more tables based on a related columnbetween them.
+
+**Types of Joins:**
+- **INNER JOIN**: Returns only matching rows from both tables.
+- **LEFT JOIN**: Returns all rows from the left table and matching rows from the right table.
+- **RIGHT JOIN**: Returns all rows from the right table and matching rows from the lefttable.
+- **FULL JOIN**: Returns all rows from both tables (matching and non-matching).
+- **SELF JOIN**: Joins a table with itself.
+- **CROSS JOIN**: Returns the Cartesian product of both tables (all possible combinations
 
 #### <a name="chapter1part13"></a>Chapter 1 - Part 13: What is INNER JOIN?
 
